@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flask Backend Test</title>
+</head>
+<body>
+    <h1>Flask Backend Connection Test</h1>
+    
+    <button onclick="checkBackend()">Test Backend Connection</button>
+    <div id="backend-status"></div>
+    
+
+    <script>
+        // Use script to make it dynamic 
+        // Backend API base URL
+        // Where is the backend?
+        //Backend API
+        const API_BASE_URL = 'http://localhost:8080';
+        
+        // JAVASCRIPT
+        // Test 1: Check if backend is running
+        // <pre> Preformatted paragragh
+        async function checkBackend() {
+            const statusDiv = document.getElementById('backend-status');
+            statusDiv.innerHTML = '<p>Connecting...</p >';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/`);
+                const data = await response.json();
+                
+                statusDiv.innerHTML = `
+                    <p style="color: green;">Backend is running!</p >
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <p style="color: red;">✗ Cannot connect to backend</p >
+                    <p>Error: ${error.message}</p >
+                    <p>Make sure Flask server is running on port 8080</p >
+                `;
+            }
+        }
+
+    </script>
+</body>
+</html>

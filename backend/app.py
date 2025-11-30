@@ -1,1 +1,55 @@
-from flask import flask
+from flask import Flask
+from flask_cors import CORS
+
+from config import FLASK_CONFIG
+
+# Create a flask application 
+app = Flask(__name__)
+
+# Decorating little by little 
+# We need to access it 
+
+# Allow the front end to use the domain, the IP address, access the backend resources.
+# CORS 
+CORS(app)
+
+# Define the index page route for the testing 
+# / is the root URL
+# root path 
+# Use function code
+# Use the dictionary code
+@app.route('/')
+def index():
+    return {
+        'message': 'Welcome to the SQL Course Backend',
+        'status': 'success',
+        'version': '1.0,0'  
+    }
+    
+# Allow the front end to access the visuals in the backend 
+
+# python aplication: Will start to find this if __name__ == '__main__':
+# Run the app
+if __name__ == '__main__':
+    host = FLASK_CONFIG['host']
+    port = FLASK_CONFIG['port']
+    debug = FLASK_CONFIG['debug']
+    
+    # If statement 
+    # Easier to identify where the error is from
+    # f means follow link (Make sure it delivers the value, making the string in dynamic )
+    
+    if host == '0.0.0.0':
+        print(f"Starting server on all interfaces at port {port}...")
+    else:
+        print(f"Starting server at http://{host}:{port}...")
+    
+    app.run(
+        host=host,
+        port=port,
+        debug=debug
+    )
+    
+    # That is the minimal setup for the backend 
+    
+    
