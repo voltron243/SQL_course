@@ -44,60 +44,68 @@ VALUES
     ('10011', 'Student_A', 'Male', '20', 'Computer Science'),
     ('20022', 'Student_B', 'Female', '21', 'Statistics'),
     ('30033', 'Student C', 'Male', '23', 'Computer Science').
-    ('40044', 'Student D', 'Male', '22', 'Computer Science'),
+    ('40044', 'Student D', 'Male', '22', 'Engineering'),
     ('50055', 'Student E', 'Female', '20', 'Architecture'),
     ('60066', 'Student F', 'Female', '23', 'Architecture'),
     ('70077', 'Student G', 'Female', '20', 'Science'),
-    ('80088', 'Student H', 'Male', '21', 'Computer Science'),
+    ('80088', 'Student H', 'Male', '21', 'Urban Planning'),
     ('90099', 'Student I', 'Female', '24', 'Calculus'),
     ('100000', 'Student J', 'Male', '22', 'Computer Science');    
 
 -- Inserting records for the "Teacher table"
 INSERT INTO `Teacher` (`Teacher_ID`, `Course_name`, `Title`, `Department`)
 VALUES
-    ('3492', 'Teacher A', 'Female', 'Architecture', 'Professor', 'Engineering and Design'),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    ();     
+    ('3492', 'Teacher A', 'Architecture', 'Professor', 'Faculty of Engineering and Design'),
+    ('4365', 'Teacher B', 'Computer Science', 'Professor', 'Faculty of Science'),
+    ('2675', 'Teacher C', 'Urban Planning', 'Professor', 'Faculty of Engineering and Design'),
+    ('2675', 'Teacher D', 'Statistics', 'Professor', 'Faculty of Science'),
+    ('6035', 'Teacher E', 'Calculus', 'Professor', 'Faculty of Science'),
+    ('2971', 'Teacher F', 'Architecture', 'Professor', 'Faculty of Engineering and Design'),
+    ('2576', 'Teacher G', 'Engineering', 'Professor', 'Faculty of Engineering and Design'),
+    ('5710', 'Teacher H', 'Engineering', 'Professor', 'Faculty of Engineering and Design'),
+    ('8700', 'Teacher I', 'Computer Science', 'Professor', 'Faculty of Science'),
+    ('4761', 'Teacher J', 'Computer Science', 'Professor', 'Faculty of Science');     
 
 -- Inserting records for the "Course table"
 INSERT INTO `Course` (`Course_ID`, `Course_name`, `Credits`, `Teacher_ID`)
 VALUES
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    ();  
+    ('472', 'Computer Science', '6', ''), -- Question about using the foreign key for Teacher_ID
+    ('860', 'Architecture', '4', ''),
+    ('255', 'Computer Science', '10', ''),
+    ('321', 'Urban Planning', '10', ''),
+    ('669', 'Computer Science', '3', ''),
+    ('965', 'Architecture', '5', ''),
+    ('758', 'Urban Planning', '12', ''),
+    ('842', 'Computer Science', '6', ''),
+    ('894', 'Urban Planning', '14', ''),
+    ('948', 'Architecture', '10', '');  
 
 -- Inserting records for the "Enrollment table"
 INSERT INTO `Enrollment` (`Enrollment_ID`, `Student_ID`, `Course_ID`, `Score`, `Enrollment_date`)
 VALUES
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    (),
-    ();  
+    (`Student_ID`, `Course_ID`, `A+`, `Enrollment_date`), -- Same goes with Student_ID and Course_ID
+    (`Student_ID`, `Course_ID`, `A+`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `A`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `B+`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `B-`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `A_`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `A`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `A+`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `B`, `Enrollment_date`),
+    (`Student_ID`, `Course_ID`, `B`, `Enrollment_date`);  
 
 -- Sorting the tables 
 -- Sorting the "Student table" 
-SELECT * FROM `sql_course`, `student`,
+SELECT * FROM `sql_course`, `Student`,
 ORDER BY `Age` ASC;  -- From youngest to oldest for age 
+
+--Sorting the "Teacher table"
+SELECT * FROM `sql_course`, `Teacher`,
+ORDER BY `Teacher_ID` ASC; -- From smallest to biggest for teacher_ID
+
+
+
+
 
 
 
