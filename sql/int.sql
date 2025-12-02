@@ -20,7 +20,7 @@ CREATE TABLE `Teacher`(
 
 -- Course's table
 CREATE TABLE `Course`(
-    `Course_ID` INT NOT NULL  PRIMARY KEY AUTO_INCREMENT,
+    `Course_ID` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `Course_name` VARCHAR(100) NOT NULL,
     `Credits` INT NOT NULL,
     `Teacher_ID` INT NOT NULL,
@@ -41,57 +41,57 @@ CREATE TABLE `Enrollment`(
 -- Inserting records for the "Student table"
 INSERT INTO `Student` (`Student_ID`, `Student_name`, `Gender`, `Age`, `Class`) 
 VALUES
-    ('100', 'Student_A', 'Male', '20', 'Computer Science'),
-    ('200', 'Student_B', 'Female', '21', 'Statistics'),
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ();    
+    ('10011', 'Student_A', 'Male', '20', 'Computer Science'),
+    ('20022', 'Student_B', 'Female', '21', 'Statistics'),
+    ('30033', 'Student C', 'Male', '23', 'Computer Science').
+    ('40044', 'Student D', 'Male', '22', 'Computer Science'),
+    ('50055', 'Student E', 'Female', '20', 'Architecture'),
+    ('60066', 'Student F', 'Female', '23', 'Architecture'),
+    ('70077', 'Student G', 'Female', '20', 'Science'),
+    ('80088', 'Student H', 'Male', '21', 'Computer Science'),
+    ('90099', 'Student I', 'Female', '24', 'Calculus'),
+    ('100000', 'Student J', 'Male', '22', 'Computer Science');    
 
 -- Inserting records for the "Teacher table"
 INSERT INTO `Teacher` (`Teacher_ID`, `Course_name`, `Title`, `Department`)
 VALUES
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
+    ('3492', 'Teacher A', 'Female', 'Architecture', 'Professor', 'Engineering and Design'),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
     ();     
 
 -- Inserting records for the "Course table"
 INSERT INTO `Course` (`Course_ID`, `Course_name`, `Credits`, `Teacher_ID`)
 VALUES
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
     ();  
 
 -- Inserting records for the "Enrollment table"
 INSERT INTO `Enrollment` (`Enrollment_ID`, `Student_ID`, `Course_ID`, `Score`, `Enrollment_date`)
 VALUES
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
-    ()
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
+    (),
     ();  
 
 -- Sorting the tables 
