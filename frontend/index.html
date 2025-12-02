@@ -21,12 +21,12 @@
         // Test 1: Check if backend is running
         // <pre> Preformatted paragragh
         async function checkBackend() {
-            const statusDiv = document.getElementById('backend-status');
-            statusDiv.innerHTML = '<p>Connecting...</p >';
+            const statusDiv = document.getElementById('backend-status'); 
+            statusDiv.innerHTML = '<p>Connecting...</p >'; // Show connecting message dynamically
             
             try {
                 const response = await fetch(`${API_BASE_URL}/`);
-                const data = await response.json();
+                const data = await response.json(); // Converts response(Dictionary) to json
                 
                 statusDiv.innerHTML = `
                     <p style="color: green;">Backend is running!</p >
