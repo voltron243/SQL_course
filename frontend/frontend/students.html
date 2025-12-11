@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+</head>
+<body>
+    <h1>Student List</h1>
+    
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="teachers.html">Teacher List</a>
+        <!-- Homework: Add links to Courses and Enrollments -->
+    </nav>
+    
+    <hr>
+    
+    <button onclick="loadStudents()">Refresh Data</button>
+    
+    <div id="loading">Loading...</div>
+    <div id="error" style="color: red; display: none;"></div>
+    
+    <h2>Total: <span id="count">0</span> records</h2>
+    
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Class</th>
+            </tr>
+        </thead>
+        <tbody id="data-table">
+            <!-- Data will be populated by JavaScript -->
+        </tbody>
+    </table>
+    
+    <script src="js/api.js"></script>
+    <script>
+        async function loadStudents() {
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const tableBody = document.getElementById('data-table');
+            const countSpan = document.getElementById('count');
+            
+            loadingDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            
+            try {
+                const data = await fetchStudents();
+                
+                // Clear table
+                tableBody.innerHTML = '';
+                
+                // Populate data
+                data.forEach(student => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${student.student_id}</td>
+                        <td>${student.student_name}</td>
+                        <td>${student.gender || '-'}</td>
+                        <td>${student.age || '-'}</td>
+                        <td>${student.class || '-'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                
+                countSpan.textContent = data.length;
+                loadingDiv.style.display = 'none';
+                
+            } catch (error) {
+                errorDiv.textContent = 'Loading failed: ' + error.message;
+                errorDiv.style.display = 'block';
+                loadingDiv.style.display = 'none';
+            }
+        }
+        
+        // Auto load data when page loads
+        window.onload = loadStudents;
+    </script>
+</body>
+</html>
