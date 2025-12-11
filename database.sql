@@ -5,4 +5,5 @@ USE practice;
 --ls
 --cd backend 
 --(python app.py)
+-- Make sure it is consistent when naming 
 

@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 # Allow the front end to use the domain, the IP address, access the backend resources.
 # CORS 
+# / is the root URL
 CORS(app)
 
 # Define the index page route for the testing 
@@ -18,12 +19,22 @@ CORS(app)
 # root path 
 # Use function code
 # Use the dictionary code
+# Key is string - list, tuple, or dictionary
+# Dictionary to communicate between the backend and the frontend 
+# Format on the backend 
 @app.route('/')
 def index():
     return {
         'message': 'Welcome to the SQL Course Backend',
         'status': 'success',
-        'version': '1.0,0'  
+        'version': '1.0,0',  
+        'data': {
+            'Student_ID': 'Student_ID',
+            'Student_name': 'Student_name', 
+            'Gender': 'Gender',
+            'Age': 'Age',
+            'Class': 'Class_'
+        }
     }
     
 # Allow the front end to access the visuals in the backend 
