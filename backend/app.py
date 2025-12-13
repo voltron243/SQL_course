@@ -1,7 +1,11 @@
 from flask import Flask
 from flask_cors import CORS
-
+from config import MYSQL_CONFIG
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from config import FLASK_CONFIG
+
+from routes import init_routes
 
 # Create a flask application 
 app = Flask(__name__)
@@ -13,6 +17,16 @@ app = Flask(__name__)
 # CORS 
 # / is the root URL
 CORS(app)
+
+# Database connection (f" - Recognise names in curly brackets)
+# Set up the database URL (STRING)
+DATABASE_URL = f"mysql+pymysql://{MYSQL_CONFIG['user']}:{MYSQL_CONFIG['password']}@{MYSQL_CONFIG['host']}:{MYSQL_CONFIG['port']}/{MYSQL_CONFIG['database']}?charset{MYSQL_CONFIG['charset']}"
+
+# Establish the connection to the dictionary to config
+engine = create_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
+SessionLocal = sessionmaker(bind=engine) # Initalise the routes
+
+init_routes(app, SessionLocal) # Initiate the app and sessionlocal
 
 # Define the index page route for the testing 
 # / is the root URL
