@@ -33,7 +33,19 @@ def index():
             'Student_name': 'Student_name', 
             'Gender': 'Gender',
             'Age': 'Age',
-            'Class': 'Class_'
+            'Class': 'Class_',
+            'Test': 'Test',
+            'Teacher_ID': 'Teacher_ID',
+            'Teacher_name': 'Teacher_name',
+            'Credits':'Credits',
+            'Title': 'Title',
+            'Department': 'Department',
+            'Course_ID': 'Course_ID',
+            'Course_name': 'Course_name',
+            'Credits': 'Credits',
+            'Enrollment_ID': 'Enrollment_ID',
+            'Score': 'Score',
+            'Enrollment_date': 'Enrollment_date'
         }
     }
     

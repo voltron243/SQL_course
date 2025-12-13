@@ -7,3 +7,12 @@ USE practice;
 --(python app.py)
 -- Make sure it is consistent when naming 
 
+--  single-column comments 
+    """
+    Multi-column comments 
+    """
+    
+    '''
+    Multi-column comments 
+    ''' 
+
