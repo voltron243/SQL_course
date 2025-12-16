@@ -43,4 +43,16 @@ async function fetchTeachers() {
     return await apiRequest('/teachers');
 }
 
-// Homework: Implement fetchCourses and fetchEnrollments
+/**
+ * Fetch all courses
+ */
+async function fetchCourses() {
+    return await apiRequest('/courses');
+}
+
+/**
+ * Fetch all enrollment records
+ */
+async function fetchEnrollments() {
+    return await apiRequest('/enrollments');
+}

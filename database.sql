@@ -15,4 +15,3 @@ USE practice;
     '''
     Multi-column comments 
     ''' 
-
