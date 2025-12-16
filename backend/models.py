@@ -23,7 +23,7 @@ class Student(Base):  # Base is an instance from the
     
     # Relationship from Enrollment 
     # Through the enrollment form (see which student has enrolled)
-    Enrollment = relationship('Student', back_populates='student')
+    Enrollment = relationship('Student', back_populates='Student')
     
     # We need to define dictionary - We need to return a dictionary that we found in the database
     # A dictionary can be a database
@@ -76,7 +76,7 @@ class Course(Base):
     # Relationship statement related to the teacher table
     # In the relationship, it will return everything from the table 
     Teacher = relationship('Teacher', back_populates='Course')
-    Enrollment =  relationship('Enrollment', backpopulates='Course')
+    Enrollment =  relationship('Enrollment', back_populates='Course')
     
     def to_dict(self):
         return{
@@ -103,7 +103,7 @@ class Enrollment(Base):
     Enrollment_date = Column(Date, nullable=False, comment='Enrollment_date')
     
     # Relationship
-    Student = relationship('Student', backpopulates='Enrollment') 
+    Student = relationship('Student', back_populates='Enrollment') 
     Course = relationship('Course', back_populates='Enrollment')
     
     def to_dict(self):

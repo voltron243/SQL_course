@@ -42,6 +42,12 @@ def index():
         'message': 'Welcome to the SQL Course Backend',
         'status': 'success',
         'version': '1.0,0',  
+        'endpoints':{
+            'students': '/api/students',
+            'teachers': '/api/teachers',
+            'courses': '/api/courses',
+            'enrollments': '/api/enrollments'
+        }
     }
     
 # Allow the front end to access the visuals in the backend 
