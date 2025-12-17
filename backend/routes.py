@@ -1,4 +1,3 @@
-from copy import error
 from flask import Blueprint, jsonify
 from models import Course, Enrollment, Student, Teacher
 
@@ -90,7 +89,7 @@ def init_routes(app, db_session):
             }), 500 
     
     # Enrollment 
-    @api.route('/teachers', methods=['GET'])
+    @api.route('/enrollments', methods=['GET'])          
     def get_enrollments():
         try:
             session = db_session()
@@ -115,7 +114,7 @@ def init_routes(app, db_session):
     def health_check():
         return jsonify(
             {
-                'sucess': True,
+                'success': True,
                 'message': 'API is running'
             }
         )

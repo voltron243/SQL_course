@@ -59,11 +59,11 @@
                 data.forEach(student => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${student.student_id}</td>
-                        <td>${student.student_name}</td>
-                        <td>${student.gender || '-'}</td>
-                        <td>${student.age || '-'}</td>
-                        <td>${student.class || '-'}</td>
+                        <td>${Student.Student_ID}</td>
+                        <td>${Student.Student_name}</td>
+                        <td>${Student.Gender || '-'}</td>
+                        <td>${Student.Age || '-'}</td>
+                        <td>${Student.Class || '-'}</td>
                     `;
                     tableBody.appendChild(row);
                 });

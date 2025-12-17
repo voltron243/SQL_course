@@ -16,14 +16,14 @@ class Student(Base):  # Base is an instance from the
     __tablename__ = 'Student'
     
     Student_ID = Column(Integer, primary_key=True, autoincrement=True, comment='Student_ID') # Column itself is an int
-    Student_name = Column(String(50), nullable=False, comment='Student Name') # Column itself is a string
+    Student_name = Column(String(100), nullable=False, comment='Student Name') # Column itself is a string
     Gender = Column(String(50), nullable=False, comment='Gender') 
     Age = Column(Integer, nullable=False)
-    Class_ = Column('class', String(100), nullable=False)
+    Class_ = Column('Class', String(100), nullable=False)
     
     # Relationship from Enrollment 
     # Through the enrollment form (see which student has enrolled)
-    Enrollment = relationship('Student', back_populates='Student')
+    Enrollment = relationship('Enrollment', back_populates='Student')
     
     # We need to define dictionary - We need to return a dictionary that we found in the database
     # A dictionary can be a database
@@ -84,7 +84,7 @@ class Course(Base):
             'Course_name': self.Course_name,
             'Credits': self.Credits,
             'Teacher_ID': self.Teacher_ID,
-            'Teacher_name': self.teacher.teacher_name if self.teacher else None
+            'Teacher_name': self.Teacher.Teacher_name if self.Teacher else None
         }
 
 # Enrollment Table
@@ -99,8 +99,8 @@ class Enrollment(Base):
     Enrollment_ID = Column(Integer, primary_key=True, autoincrement=True, comment='Enrollment_ID')
     Student_ID = Column(Integer, ForeignKey('Student.Student_ID'), nullable=False)
     Course_ID = Column(Integer, ForeignKey('Course.Course_ID'), nullable=False)
-    Score = Column(Integer, nullable=False, comment='Score')
-    Enrollment_date = Column(Date, nullable=False, comment='Enrollment_date')
+    Score = Column(String(50), nullable=False, comment='Score')
+    Enrollment_date = Column(Date, comment='Enrollment_date')
     
     # Relationship
     Student = relationship('Student', back_populates='Enrollment') 
@@ -110,11 +110,11 @@ class Enrollment(Base):
         return{
             'Enrollment_ID': self.Enrollment_ID,
             'Score': self.Score,
-            'Enrollment_date': self.Enrollment_date.strftime('%Y-%m-%d'), # % mark is to be changed for the numbers 
+            'Enrollment_date': self.Enrollment_date, # % mark is to be changed for the numbers 
             'Student_ID': self.Student_ID,
-            'Student_name': self.Student_name if self.Student else None,
+            'Student_name': self.Student.Student_name if self.Student else None,
             'Course_ID': self.Course_ID,
-            'Course_name': self.Course_name if self.Course else None
+            'Course_name': self.Course.Course_name if self.Course else None
         }
     
      

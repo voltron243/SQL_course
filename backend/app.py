@@ -3,9 +3,8 @@ from flask_cors import CORS
 from config import MYSQL_CONFIG
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from config import FLASK_CONFIG
-
 from routes import init_routes
+from config import FLASK_CONFIG
 
 # Create a flask application 
 app = Flask(__name__)
@@ -20,7 +19,7 @@ CORS(app)
 
 # Database connection (f" - Recognise names in curly brackets)
 # Set up the database URL (STRING)
-DATABASE_URL = f"mysql+pymysql://{MYSQL_CONFIG['user']}:{MYSQL_CONFIG['password']}@{MYSQL_CONFIG['host']}:{MYSQL_CONFIG['port']}/{MYSQL_CONFIG['database']}?charset{MYSQL_CONFIG['charset']}"
+DATABASE_URL = f"mysql+pymysql://{MYSQL_CONFIG['user']}:{MYSQL_CONFIG['password']}@{MYSQL_CONFIG['host']}:{MYSQL_CONFIG['port']}/{MYSQL_CONFIG['database']}?charset={MYSQL_CONFIG['charset']}"
 
 # Establish the connection to the dictionary to config
 engine = create_engine(DATABASE_URL, echo=True, pool_pre_ping=True)
@@ -46,7 +45,7 @@ def index():
             'students': '/api/students',
             'teachers': '/api/teachers',
             'courses': '/api/courses',
-            'enrollments': '/api/enrollments'
+            'enrollments': '/api/enrollments',          
         }
     }
     
