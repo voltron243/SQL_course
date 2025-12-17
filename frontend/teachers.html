@@ -58,10 +58,10 @@
                 data.forEach(teacher => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${Teacher.Teacher_ID}</td>
-                        <td>${Teacher.Teacher_name}</td>
-                        <td>${Teacher.Title || '-'}</td>
-                        <td>${Teacher.Department || '-'}</td>
+                        <td>${teacher.Teacher_ID}</td>
+                        <td>${teacher.Teacher_name}</td>
+                        <td>${teacher.Title || '-'}</td>
+                        <td>${teacher.Department || '-'}</td>
                     `;
                     tableBody.appendChild(row);
                 });

@@ -60,10 +60,10 @@
                 data.forEach(course => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${Course.Course_ID}</td>
-                        <td>${Course.Course_name}</td>
-                        <td>${Course.Credits || '-'}</td>
-                        <td>${Course.Teacher_name || '-'}</td>
+                        <td>${course.Course_ID}</td>
+                        <td>${course.Course_name}</td>
+                        <td>${course.Credits || '-'}</td>
+                        <td>${course.Teacher_name || '-'}</td>
                     `;
                     tableBody.appendChild(row);
                 });
