@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+</head>
+<body>
+    <h1>Student Management System</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="students.html">Student List</a></li>
+            <li><a href="teachers.html">Teacher List</a></li>
+            <li><a href="courses.html">Course List (Homework)</a></li>
+            <li><a href="enrollments.html">Enrollment List (Homework)</a></li>
+
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    
+    <h2>System Overview</h2>
+    <p>This is a simple student management system with the following features:</p>
+    <ul>
+        <li>View student information</li>
+        <li>View teacher information</li>
+        <li>View course information (Homework)</li>
+        <li>View enrollment records (Homework)</li>
+
+        <li>User Registration</li>
+        <li>User Login</li>
+    </ul>
+    
+    <h3>API Status</h3>
+    <button onclick="checkAPI()">Check API Connection</button>
+    <div id="api-status"></div>
+    
+    <script src="js/api.js"></script>
+    <script>
+        async function checkAPI() {
+            const statusDiv = document.getElementById('api-status');
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`);
+                const data = await response.json();
+                if (data.success) {
+                    statusDiv.innerHTML = '<p style="color: green;">✓ API connection successful</p>';
+                } else {
+                    statusDiv.innerHTML = '<p style="color: red;">✗ API connection failed</p>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<p style="color: red;">✗ Cannot connect to API: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -61,11 +61,11 @@
                 data.forEach(enrollment => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${enrollment.Enrollment_ID}</td>
-                        <td>${enrollment.Student_name || '-'}</td>
-                        <td>${enrollment.Course_name || '-'}</td>
-                        <td>${enrollment.Score !== null ? enrollment.Score : '-'}</td>
-                        <td>${enrollment.Enrollment_date || '-'}</td>
+                        <td>${enrollment.id}</td>
+                        <td>${enrollment.student_name || '-'}</td>
+                        <td>${enrollment.course_name || '-'}</td>
+                        <td>${enrollment.score !== null ? enrollment.score : '-'}</td>
+                        <td>${enrollment.enroll_date || '-'}</td>
                     `;
                     tableBody.appendChild(row);
                 });

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="register.html">Register</a>
+    </nav>
+    
+    <hr>
+    
+    <div id="message" style="margin-bottom: 10px;"></div>
+    
+    <form id="loginForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <br>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+    
+    <script src="js/api.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = 'Logging in...';
+            messageDiv.style.color = 'black';
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const result = await loginUser(data);
+                messageDiv.textContent = result.message;
+                messageDiv.style.color = 'green';
+                // Store user info if needed, or just redirect
+                localStorage.setItem('user', JSON.stringify(result.data));
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } catch (error) {
+                messageDiv.textContent = error.message;
+                messageDiv.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>

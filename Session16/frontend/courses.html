@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enrollment List</title>
+    <title>Course List</title>
 </head>
 <body>
-    <h1>Enrollment List</h1>
+    <h1>Course List</h1>
     
     <nav>
         <a href="index.html">Home</a> |
         <a href="students.html">Student List</a> |
         <a href="teachers.html">Teacher List</a> |
-        <a href="courses.html">Course List</a>
+        <a href="enrollments.html">Enrollment List</a>
     </nav>
     
     <hr>
     
-    <button onclick="loadEnrollments()">Refresh Data</button>
+    <button onclick="loadCourses()">Refresh Data</button>
     
     <div id="loading">Loading...</div>
     <div id="error" style="color: red; display: none;"></div>
@@ -28,11 +28,10 @@
     <table border="1" cellpadding="10" cellspacing="0">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Student Name</th>
+                <th>Course ID</th>
                 <th>Course Name</th>
-                <th>Score</th>
-                <th>Enroll Date</th>
+                <th>Credits</th>
+                <th>Teacher Name</th>
             </tr>
         </thead>
         <tbody id="data-table">
@@ -42,7 +41,7 @@
     
     <script src="js/api.js"></script>
     <script>
-        async function loadEnrollments() {
+        async function loadCourses() {
             const loadingDiv = document.getElementById('loading');
             const errorDiv = document.getElementById('error');
             const tableBody = document.getElementById('data-table');
@@ -52,20 +51,19 @@
             errorDiv.style.display = 'none';
             
             try {
-                const data = await fetchEnrollments();
+                const data = await fetchCourses();
                 
                 // Clear table
                 tableBody.innerHTML = '';
                 
                 // Populate data
-                data.forEach(enrollment => {
+                data.forEach(course => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${enrollment.Enrollment_ID}</td>
-                        <td>${enrollment.Student_name || '-'}</td>
-                        <td>${enrollment.Course_name || '-'}</td>
-                        <td>${enrollment.Score !== null ? enrollment.Score : '-'}</td>
-                        <td>${enrollment.Enrollment_date || '-'}</td>
+                        <td>${course.course_id}</td>
+                        <td>${course.course_name}</td>
+                        <td>${course.credits || '-'}</td>
+                        <td>${course.teacher_name || '-'}</td>
                     `;
                     tableBody.appendChild(row);
                 });
@@ -81,7 +79,7 @@
         }
         
         // Auto load data when page loads
-        window.onload = loadEnrollments;
+        window.onload = loadCourses;
     </script>
 </body>
 </html>
