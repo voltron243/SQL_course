@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS sql_course DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE sql_course;
+USE `sql_course`;
 
 -- Student's table 
 CREATE TABLE IF NOT EXISTS `Student`(
